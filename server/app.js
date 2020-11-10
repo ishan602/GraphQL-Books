@@ -2,7 +2,7 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema/schema.js');
 const app = express();
-
+const cors = require('cors');
 // connect to mlab database
 const mongoose = require('mongoose');
 mongoose.connect(
@@ -11,7 +11,7 @@ mongoose.connect(
 mongoose.connection.once('open', () => {
   console.log('conneted to database');
 });
-
+app.use(cors());
 app.use(
   '/graphql',
   graphqlHTTP({
