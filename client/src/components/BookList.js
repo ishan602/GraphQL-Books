@@ -8,14 +8,20 @@ function BookList() {
 
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
+
+  function addActiveClass(e, bookid) {
+    setBookId(bookid);
+    e.target.classList.add('active');
+  }
   return (
-    <div>
+    <div className='book-list-wrapper'>
       <ul className='book-list'>
         {data.books.map((book, index) => (
           <li key={index}>
             <button
+              className='book-tab'
               onClick={(e) => {
-                setBookId(book.id);
+                addActiveClass(e, book.id);
               }}
             >
               {book.name}

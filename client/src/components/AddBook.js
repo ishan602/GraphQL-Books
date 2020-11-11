@@ -17,24 +17,20 @@ function AddBook() {
 
   function submitForm(e) {
     e.preventDefault();
-    // console.log(bookName + genre + authorId);
     addBook({
       variables: { bookName: bookName, genre: genre, authorId: authorId },
       refetchQueries: [{ query: getBooksQuery }],
     });
-    setBookName('');
-    setGenre('');
-    setAuthorId('');
   }
 
   return (
     <form id='add-book' onSubmit={submitForm} className='addBookForm'>
       <div className='form-field'>
-        <label for='book-name'>Book Name:</label>
+        <label htmlFor='book-name'>Book Name:</label>
         <input
           type='text'
           name='book-name'
-          autocomplete='off'
+          autoComplete='off'
           required
           onChange={(e) => {
             setBookName(e.target.value);
@@ -42,11 +38,11 @@ function AddBook() {
         />
       </div>
       <div className='form-field'>
-        <label for='genre'>Genre:</label>
+        <label htmlFor='genre'>Genre:</label>
         <input
           type='text'
           name='genre'
-          autocomplete='off'
+          autoComplete='off'
           required
           onChange={(e) => {
             setGenre(e.target.value);
